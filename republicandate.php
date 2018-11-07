@@ -1,6 +1,6 @@
 <?php
 
-function extended_jdtofrench_romme ($juliandate) {
+function jdtoromme($juliandate) {
   $debugCalendar = 0;
   // jdtofrench () n'accepte que les dates dépassant . On calcule donc grace au systeme Romme la date révolutionaire
 
@@ -89,7 +89,7 @@ function extended_jdtofrench_romme ($juliandate) {
 function gregorian2FrenchDateArray($m, $d, $y)
 {
     $julian_date = gregoriantojd($m, $d, $y);
-    $french = extended_jdtofrench_romme($julian_date);
+    $french = jdtoromme($julian_date);
     if($french == "0/0/0")
         return "" ;
     $arD = explode("/", $french) ;
@@ -180,7 +180,7 @@ function FrenchOrdinalNumber($Day) {
 
 function gregorian2FrenchDateString($m,$d,$y) {
   $julian_date = gregoriantojd($m, $d, $y);
-  $french = extended_jdtofrench_romme($julian_date);
+  $french = jdtoromme($julian_date);
   
   if($french == "0/0/0")
     return "" ;
@@ -204,7 +204,7 @@ function gregorian2FrenchDateString($m,$d,$y) {
 
 function gregorian2FrenchDateStringShort($m,$d,$y) {
   $julian_date = gregoriantojd($m, $d, $y);
-  $french = extended_jdtofrench_romme($julian_date);
+  $french = jdtoromme($julian_date);
   if($french == "0/0/0")
     return "" ;
 
