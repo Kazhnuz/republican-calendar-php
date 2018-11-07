@@ -117,9 +117,9 @@ function romme_getArray($romme_date_string) {
 
 function FrenchMonthNames($month)
 {
-    /* The names have been invented by Fabre d'Églantine, a second or rather third rank poet
-of primarily pastoral poems, with each name referring to the respective period in the agricultural year; e.g. "Vendémiaire" (approx. September) is derived from "vendange" ("harvest"), "Brumaire" (Ocotober/November) from "brume" ("fog") and so on ...     */
-   
+  // Convert a month number to the right republican calendar month name.
+  
+  // Month names comes from Fabre d'Eglantine : https://en.wikipedia.org/wiki/French_Republican_calendar#Months
   $monthArray = array("Vendémiaire",
                       "Brumaire",
                       "Frimaire",
@@ -132,18 +132,19 @@ of primarily pastoral poems, with each name referring to the respective period i
                       "Messidor",
                       "Thermidor",
                       "Fructidor",
-                      "Sansculottide") ;
+                      "Sansculottide"); // The "13th" month is a special case for the sanscullotide,
+                                        // the leap days of the republican calendar.
   if($month < count($monthArray)+1) {
     return $monthArray[$month-1;
   }
 }
 
-function FrenchDayNames($Day)
+function FrenchDayNames($day)
 {
-  /* The names have been invented by Fabre d'Églantine, a second or rather third rank poet
-of primarily pastoral poems, with each name referring to the respective period in the agricultural year; e.g. "Vendémiaire" (approx. September) is derived from "vendange" ("harvest"), "Brumaire" (Ocotober/November) from "brume" ("fog") and so on ...     */
-   
-   
+  // Convert a month day number to the right republican calendar day name. 
+  // /!\ Do not use if you are in the sansculottides days, as *technically*, they aren't part of any decade.
+  
+  // Days names comes from Fabre d'Eglantine : https://en.wikipedia.org/wiki/French_Republican_calendar#Ten_days_of_the_week
   $dayArray = array( "Primidi",
                   "Duodi",
                   "Tridi",
@@ -155,10 +156,16 @@ of primarily pastoral poems, with each name referring to the respective period i
                   "Nonidi",
                   "Décadi") ;
 
-  return $dayArray[($Day-1) % 10] ;   
+
+  // As the republican calendar use a ten-day decade and a thirty-day month, just derive the decade day from day month modulo ten.
+  
+  return $dayArray[($day-1) % 10] ;   
 }
 
-function FrenchSaintNames($Month, $Day) {
+function FrenchSaintNames($month, $day) {
+  // Convert a romme day and month number to the corresponding epiphany name.
+
+  // Days names comes from Fabre d'Eglantine : https://en.wikipedia.org/wiki/French_Republican_calendar#Rural_Calendar
   $epiphanyArray = array('Raisin','Safran','Châtaigne','Colchique','Cheval','Balsamine','Carotte','Amaranthe','Panais','Cuve','Pomme de terre','Immortelle','Potiron','Réséda','Âne','Belle de nuit','Citrouille','Sarrasin','Tournesol','Pressoir','Chanvre','Pêche','Navet','Amaryllis','Bœuf','Aubergine','Piment','Tomate','Orge','Tonneau', 'Pomme','Céleri','Poire','Betterave','Oie','Héliotrope','Figue','Scorsonère','Alisier','Charrue','Salsifis','Mâcre','Topinambour','Endive','Dindon','Chervis','Cresson','Dentelaire','Grenade','Herse','Bacchante','Azerole','Garance','Orange','Faisan','Pistache','Macjonc','Coing','Cormier','Rouleau', 'Raiponce','Turneps','Chicorée','Nèfle','Cochon','Mâche','Chou-fleur','Miel','Genièvre','Pioche','Cire','Raifort','Cèdre','Sapin','Chevreuil','Ajonc','Cyprès','Lierre','Sabine','Hoyau','Érable sucré','Bruyère','Roseau','Oseille','Grillon','Pignon','Liège','Truffe','Olive','Pelle', 'Tourbe','Houille','Bitume','Soufre','Chien','Lave','Terre végétale','Fumier','Salpêtre','Fléau','Granit','Argile','Ardoise','Grès','Lapin','Silex','Marne','Pierre à chaux','Marbre','Van','Pierre à plâtre','Sel','Fer','Cuivre','Chat','Étain','Plomb','Zinc','Mercure','Crible', 'Lauréole','Mousse','Fragon','Perce-neige','Taureau','Laurier tin','Amadouvier','Mézéréon','Peuplier','Coignée','Ellébore','Brocoli','Laurier','Avelinier','Vache','Buis','Lichen','If','Pulmonaire','Serpette','Thlaspi','Thimele','Chiendent','Trainasse','Lièvre','Guède','Noisetier','Cyclamen','Chélidoine','Traîneau', 'Tussilage','Cornouiller','Violier','Troène','Bouc','Asaret','Alaterne','Violette','Marceau','Bêche','Narcisse','Orme','Fumeterre','Vélar','Chèvre','Épinard','Doronic','Mouron','Cerfeuil','Cordeau','Mandragore','Persil','Cochléaria','Pâquerette','Thon','Pissenlit','Sylvie','Capillaire','Frêne','Plantoir', 'Primevère','Platane','Asperge','Tulipe','Poule','Bette','Bouleau','Jonquille','Aulne','Couvoir','Pervenche','Charme','Morille','Hêtre','Abeille','Laitue','Mélèze','Ciguë','Radis','Ruche','Gainier','Romaine','Marronnier','Roquette','Pigeon','Lilas (commun)','Anémone','Pensée','Myrtile','Greffoir', 'Rose','Chêne','Fougère','Aubépine','Rossignol','Ancolie','Muguet','Champignon','Hyacinthe','Râteau','Rhubarbe','Sainfoin','Bâton-d´or','Chamerops','Ver à soie','Consoude','Pimprenelle','Corbeille d´or','Arroche','Sarcloir','Statice','Fritillaire','Bourrache','Valériane','Carpe','Fusain','Civette','Buglosse','Sénevé','Houlette', 'Luzerne','Hémérocalle','Trèfle','Angélique','Canard','Mélisse','Fromental','Martagon','Serpolet','Faux','Fraise','Bétoine','Pois','Acacia','Caille','Œillet','Sureau','Pavot','Tilleul','Fourche','Barbeau','Camomille','Chèvrefeuille','Caille-lait','Tanche','Jasmin','Verveine','Thym','Pivoine','Chariot', 'Seigle','Avoine','Oignon','Véronique','Mulet','Romarin','Concombre','Échalote','Absinthe','Faucille','Coriandre','Artichaut','Girofle','Lavande','Chamois','Tabac','Groseille','Gesse','Cerise','Parc','Menthe','Cumin','Haricot','Orcanète','Pintade','Sauge','Ail','Vesce','Blé','Chalemie', 'Épeautre','Bouillon-blanc','Melon','Ivraie','Bélier','Prêle','Armoise','Carthame','Mûre','Arrosoir','Panic','Salicorne','Abricot','Basilic','Brebis','Guimauve','Lin','Amande','Gentiane','Écluse','Carline','Câprier','Lentille','Aunée','Loutre','Myrte','Colza','Lupin','Coton','Moulin', 'Prune','Millet','Lycoperdon','Escourgeon','Saumon','Tubéreuse','Sucrion','Apocyn','Réglisse','Échelle','Pastèque','Fenouil','Épine vinette','Noix','Truite','Citron','Cardère','Nerprun','Tagette','Hotte','Églantier','Noisette','Houblon','Sorgho','Écrevisse','Bigarade','Verge d´or','Maïs','Marron','Panier');
   
   $absoluteDay = (($Month-1)*30)+$Day;
@@ -167,6 +174,9 @@ function FrenchSaintNames($Month, $Day) {
       return $epiphanyArray[$absoluteDay-1];
 }
 function FrenchSansCullotidesNames($Day) {
+  // Convert the sansculottide day number to its name.
+
+  // Complentary Day names: https://en.wikipedia.org/wiki/French_Republican_calendar#Complementary_days 
   $sanscullotidesArray = array("Jour de la vertu",
                 "Jour du génie",
                 "Jour du travail",
@@ -178,6 +188,8 @@ function FrenchSansCullotidesNames($Day) {
     return $sanscullotidesArray[$Day-1] ;
 }
 function FrenchOrdinalNumber($Day) {
+  // Convert the sansculottide day number to a string.
+
   $ordinalnumberArray = array("Premier",
                 "Deuxième",
                 "Troisième",
@@ -190,11 +202,16 @@ function FrenchOrdinalNumber($Day) {
 }
 
 function gregorian2FrenchDateString($m,$d,$y) {
+  // Convert a gregorian date to a complete romme date string
+
+  // Start by getting the romme array from the gregorian date
   $dateArray = gregoriantoromme_getArray($m,$d,$y);
   
+  // Get the month and day names
   $monthname = FrenchMonthNames($dateArray[0]) ;
   $dayname = FrenchDayNames($dateArray[1]);
 
+  // If you are in a complentary day, show it the right way
   if ($dateArray[0]==13) {
     $dayMonthString = FrenchSansCullotidesNames($dateArray[1]) . ", ";
     $saintString = FrenchOrdinalNumber($dateArray[1]) . " jour des " . $monthname;
@@ -203,17 +220,21 @@ function gregorian2FrenchDateString($m,$d,$y) {
     $saintString = FrenchSaintNames($dateArray[0],$dateArray[1]);
   }
 
+  // Create the string for the year
   $yearString = "an " . $dateArray[2];
 
   return $dayMonthString . $yearString . "<br /><em>" . $saintString . "</em>";
 }
 
 function gregorian2FrenchDateStringShort($m,$d,$y) {
+  // Convert a gregorian date to a shorter romme date string
   $dateArray = gregoriantoromme_getArray($m,$d,$y);
   
+  // Get the month and day names
   $monthname = FrenchMonthNames($dateArray[0]);
   $dayname = FrenchDayNames($dateArray[1]);
 
+  // If you are in a complentary day, show it the right way
   if ($dateArray[0]==13) {
     $dayMonthString = FrenchSansCullotidesNames($dateArray[1]) . ", ";
     $saintString = FrenchOrdinalNumber($dateArray[1]) . " jour des " . $monthname;
@@ -222,6 +243,7 @@ function gregorian2FrenchDateStringShort($m,$d,$y) {
     $saintString = FrenchSaintNames($dateArray[0],$dateArray[1]);
   }
   
+  // Create the string for the year
   $yearString = "an " . $dateArray[2];
 
   return $dayMonthString . $yearString;
