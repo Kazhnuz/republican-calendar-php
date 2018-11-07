@@ -115,13 +115,12 @@ function romme_getArray($romme_date_string) {
   return $rommeArray;
 }
 
-function FrenchMonthNames($mo)
+function FrenchMonthNames($month)
 {
     /* The names have been invented by Fabre d'Églantine, a second or rather third rank poet
 of primarily pastoral poems, with each name referring to the respective period in the agricultural year; e.g. "Vendémiaire" (approx. September) is derived from "vendange" ("harvest"), "Brumaire" (Ocotober/November) from "brume" ("fog") and so on ...     */
    
-   
-    $arMo = array("Vendémiaire",
+  $monthArray = array("Vendémiaire",
                       "Brumaire",
                       "Frimaire",
                       "Nivôse",
@@ -134,9 +133,9 @@ of primarily pastoral poems, with each name referring to the respective period i
                       "Thermidor",
                       "Fructidor",
                       "Sansculottide") ;
-    if($mo < count($arMo)+1)
-        return $arMo[$mo-1] ;
-   
+  if($month < count($monthArray)+1) {
+    return $monthArray[$month-1;
+  }
 }
 
 function FrenchDayNames($Day)
