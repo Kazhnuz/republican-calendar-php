@@ -35,7 +35,7 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
     <h2>Test des différentes fonctions</h2>
     <p>
       <strong>jdtoromme :</strong> <?php echo jdtoromme( $testJulianday );?> <br />
-      <strong>gregoriantoromme :</strong> <?php echo gregoriantoromme($testMois, date('j'), date('Y'));?><br />
+      <strong>gregoriantoromme :</strong> <?php echo gregoriantoromme($testMois, $testJour, $testAnnee);?><br />
       <strong>gregorian2FrenchDateString :</strong> <?php echo gregorian2FrenchDateString($testMois, $testJour, $testAnnee);?><br />
       <strong>gregorian2FrenchDateStringShort :</strong> <?php echo gregorian2FrenchDateStringShort($testMois, $testJour, $testAnnee);?><br />
       

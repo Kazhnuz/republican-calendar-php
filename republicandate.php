@@ -217,8 +217,8 @@ function gregorian2FrenchDateString($m,$d,$y) {
 
   // If you are in a complentary day, show it the right way
   if ($dateArray[0]==13) {
-    $dayMonthString = FrenchSansCullotidesNames($dateArray[1]) . ", ";
-    $saintString = FrenchOrdinalNumber($dateArray[1]);
+    $dayMonthString = FrenchOrdinalNumber($dateArray[1]) . ", ";
+    $saintString    = FrenchSansCullotidesNames($dateArray[1]);
   } else {
     $dayMonthString = $dayname . ", " . $dateArray[1] . " " . $monthname . ", ";
     $saintString = FrenchSaintNames($dateArray[0],$dateArray[1]);
@@ -240,8 +240,8 @@ function gregorian2FrenchDateStringShort($m,$d,$y) {
 
   // If you are in a complentary day, show it the right way
   if ($dateArray[0]==13) {
-    $dayMonthString = FrenchSansCullotidesNames($dateArray[1]) . ", ";
-    $saintString = FrenchOrdinalNumber($dateArray[1]);
+    $dayMonthString = FrenchOrdinalNumber($dateArray[1]) . ", ";
+    $saintString    = FrenchSansCullotidesNames($dateArray[1]);
   } else {
     $dayMonthString = $dateArray[1] . " " . $monthname . ", ";
     $saintString = FrenchSaintNames($dateArray[0],$dateArray[1]);
