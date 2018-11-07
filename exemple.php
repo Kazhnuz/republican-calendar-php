@@ -1,6 +1,6 @@
 <?php 
 //
-// republicandate :: exemple.php
+// romme_calendar :: exemple.php
 //
 // Some exemple to see if everything works in the romme calendar library
 // 
@@ -8,7 +8,7 @@
 
 // On commence par inclure le fichier pour pouvoir convertir la date en calendrier romme
 
-include("republicandate.php");
+include("romme-calendar.php");
 
 $testMois   = date('n');
 $testJour   = date('j');
@@ -22,10 +22,10 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>republicandate :: exemple.php</title>
+    <title>PHP Romme Republican Calendar exemple</title>
   </head>
   <body>
-    <h1>republicandate :: exemple.php</h1>
+    <h1>PHP Romme Republican Calendar exemples</h1>
     <h2>Date d'aujourd'hui</h2>
     <p>
       <strong>Date utilisée :</strong> <?php echo $testJour;?>/<?php echo $testMois;?>/<?php echo $testAnnee;?><br />
@@ -36,8 +36,8 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
     <p>
       <strong>jdtoromme :</strong> <?php echo jdtoromme( $testJulianday );?> <br />
       <strong>gregoriantoromme :</strong> <?php echo gregoriantoromme($testMois, $testJour, $testAnnee);?><br />
-      <strong>gregorian2FrenchDateString :</strong> <?php echo gregorian2FrenchDateString($testMois, $testJour, $testAnnee);?><br />
-      <strong>gregorian2FrenchDateStringShort :</strong> <?php echo gregorian2FrenchDateStringShort($testMois, $testJour, $testAnnee);?><br />
+      <strong>gregorian2FrenchDateString :</strong> <?php echo gregoriantoromme_completeString($testMois, $testJour, $testAnnee);?><br />
+      <strong>gregorian2FrenchDateStringShort :</strong> <?php echo gregoriantoromme_simplerString($testMois, $testJour, $testAnnee);?><br />
       
     </p>
   </body>

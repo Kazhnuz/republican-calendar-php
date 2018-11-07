@@ -1,8 +1,8 @@
-# Republicain-Calendar-PHP
+# PHP Romme Republican Calendar
 
-Juste un petit convertisseur de date en calendrier républicain pour ceux qui le souhaite. Le script peut afficher soit une date minimale (style 23 Brumaire, an 225) soit une date plus complexe (Tridi, 23 Brumaire, an 225 - Garance).
+Une librairie PHP pour couvertir facilement une date dans le calendrier républicain, utilisant le [système Romme](http://prairial.free.fr/calendrier/calendrier.php?lien=discoursromme).
 
-Il utilise le système Romme pour calculer la date.
+Le script peut afficher soit une date minimale (style 23 Brumaire, an 225) soit une date plus complexe (Tridi, 23 Brumaire, an 225 - Garance).
 
 ## Comment l'utiliser.
 
