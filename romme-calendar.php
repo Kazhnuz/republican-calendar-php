@@ -118,6 +118,10 @@ function gregoriantoromme($m, $d, $y) {
   return $romme_date_string;
 }
 
+function date_romme() {
+  return gregoriantoromme(date('n'), date('j'), date('Y'));
+}
+
 /*  2. getting the romme array
 
     These functions report an array instead of the romme string.

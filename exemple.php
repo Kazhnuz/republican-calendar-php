@@ -36,6 +36,7 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
     <p>
       <strong>jdtoromme :</strong> <?php echo jdtoromme( $testJulianday );?> <br />
       <strong>gregoriantoromme :</strong> <?php echo gregoriantoromme($testMois, $testJour, $testAnnee);?><br />
+      <strong>date_romme :</strong> <?php echo date_romme();?><br />
     </p>
     
     <h2>Getting the month/day/year</h2>
