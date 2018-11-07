@@ -1,8 +1,32 @@
 <?php
+/* romme-calendar.php
+ *
+ * A romme french republican calendar converting library, and some republican
+ * calendar utils.
+ *
+ * Copyright 2016-2013 Kazhnuz
+ *
+ * This programm is free software. You can redistribute it and/or modify
+ * it under terms of the MIT Licence 
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+
+/*  1. Converting to romme string functions
+
+    This library use a romme string, formated the following way "month/day/year",
+    using the american way of working, in order to work like php common functions.
+    
+    These functions convert the gregorian date and julian day counts to the romme
+    string.
+ */
+
 
 function jdtoromme( $juliandaycount ) {
+  // get a romme string from a julian day count
   $debugCalendar = 0;
-  // jdtofrench () n'accepte que les dates dépassant . On calcule donc grace au systeme Romme la date révolutionaire
 
   if (($juliandaycount > gregoriantojd (9, 22, 1805)) or ($debugCalendar==1)) { // Ce calcul prend le relais à partir du 23 septembre 1805
     // On commence par déclarer les variables, qui nous servirons à calculer ou on en est rendu.
@@ -87,13 +111,27 @@ function jdtoromme( $juliandaycount ) {
 }
 
 function gregoriantoromme($m, $d, $y) {
+  // get a romme string from a gregorian date
   $juliandaycount     = gregoriantojd($m, $d, $y);
   $romme_date_string  = jdtoromme($juliandaycount);
   
   return $romme_date_string;
 }
 
+/*  2. getting the romme array
+
+    These functions report an array instead of the romme string.
+ */
+
+function romme_getArray($romme_date_string) {
+  // get a romme array from a romme string
+  $rommeArray = explode("/", $romme_date_string);
+  
+  return $rommeArray;
+}
+
 function jdtoromme_getArray($juliandaycount) {
+  // get a romme array from a julian day count
   $romme_date_string = jdtoromme($juliandaycount);
   
   $rommeArray = romme_getArray($romme_date_string);
@@ -102,6 +140,7 @@ function jdtoromme_getArray($juliandaycount) {
 }
 
 function gregoriantoromme_getArray($m, $d, $y) {
+  // get a romme array from a gregorian date
   $romme_date_string = gregoriantoromme($m, $d, $y);
   
   $rommeArray = romme_getArray($romme_date_string);
@@ -109,11 +148,10 @@ function gregoriantoromme_getArray($m, $d, $y) {
   return $rommeArray;
 }
 
-function romme_getArray($romme_date_string) {
-  $rommeArray = explode("/", $romme_date_string);
-  
-  return $rommeArray;
-}
+/*  3. Getting republican calendar names
+
+    Get the names of the month, days, etc. of the revolutionnary calendar
+ */
 
 function romme_getMonthName($month)
 {
@@ -227,6 +265,12 @@ function romme_getComplementaryDayName($Day) {
   if($Day < count($sanscullotidesArray)+1)
     return $sanscullotidesArray[$Day-1] ;
 }
+
+/*  4. Romme calendar string handling
+
+    These functions help the user to get a more beautifull romme string,
+    usable directly in their pages.
+ */
 
 function gregoriantoromme_completeString($m,$d,$y) {
   // Convert a gregorian date to a complete romme date string
