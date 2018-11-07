@@ -148,6 +148,27 @@ function gregoriantoromme_getArray($m, $d, $y) {
   return $rommeArray;
 }
 
+/*  2.1. Getting the different numerical elements from a romme array
+ */
+ 
+function romme_getDay($romme_date_string) {
+  $rommeArray = romme_getArray($romme_date_string);
+  
+  return $rommeArray[1];
+}
+
+function romme_getMonth($romme_date_string) {
+  $rommeArray = romme_getArray($romme_date_string);
+  
+  return $rommeArray[0];
+}
+
+function romme_getYear($romme_date_string) {
+  $rommeArray = romme_getArray($romme_date_string);
+  
+  return $rommeArray[2];
+}
+
 /*  3. Getting republican calendar names
 
     Get the names of the month, days, etc. of the revolutionnary calendar
