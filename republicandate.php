@@ -86,21 +86,47 @@ function jdtoromme( $juliandaycount ) {
   return $romme_date_string;
 }
 
+function gregoriantoromme($m, $d, $y) {
+  $juliandaycount     = gregoriantojd($m, $d, $y);
+  $romme_date_string  = jdtoromme($juliandaycount);
+  
+  return $romme_date_string;
+}
+
+function jdtoromme_getArray($juliandaycount) {
+  $romme_date_string = jdtoromme($juliandaycount);
+  
+  $rommeArray = romme_getArray($romme_date_string);
+  
+  return $rommeArray;
+}
+
+function gregoriantoromme_getArray($m, $d, $y) {
+  $romme_date_string = gregoriantoromme($m, $d, $y);
+  
+  $rommeArray = romme_getArray($romme_date_string);
+  
+  return $rommeArray;
+}
+
+function romme_getArray($romme_date_string) {
+  $rommeArray = explode("/", $romme_date_string);
+  
+  return $rommeArray;
+}
+
+
 function gregorian2FrenchDateArray($m, $d, $y)
 {
-    $julian_date = gregoriantojd($m, $d, $y);
-    $french = jdtoromme($julian_date);
-    if($french == "0/0/0")
-        return "" ;
-    $dateArray = explode("/", $french) ;
+    $rommeArray = gregoriantoromme_getArray($m, $d, $y);
    
     // get the month name
-    $monthname = FrenchMonthNames($dateArray[0]) ;
+    $monthname = FrenchMonthNames($rommeArray[0]) ;
    
     /* convert the year number to roman digits (as most historians do and documents of the time did */
-    $stryear = $dateArray[2];
+    $stryear = $rommeArray[2];
 
-    return array($monthname, $dateArray[1], $stryear ) ;
+    return array($monthname, $rommeArray[1], $stryear ) ;
 }
 
 function FrenchMonthNames($mo)
@@ -179,13 +205,8 @@ function FrenchOrdinalNumber($Day) {
 }
 
 function gregorian2FrenchDateString($m,$d,$y) {
-  $julian_date = gregoriantojd($m, $d, $y);
-  $french = jdtoromme($julian_date);
+  $dateArray = gregoriantoromme_getArray($m,$d,$y);
   
-  if($french == "0/0/0")
-    return "" ;
-
-  $dateArray = explode("/", $french) ;
   $monthname = FrenchMonthNames($dateArray[0]) ;
   $dayname = FrenchDayNames($dateArray[1]);
 
@@ -203,13 +224,9 @@ function gregorian2FrenchDateString($m,$d,$y) {
 }
 
 function gregorian2FrenchDateStringShort($m,$d,$y) {
-  $julian_date = gregoriantojd($m, $d, $y);
-  $french = jdtoromme($julian_date);
-  if($french == "0/0/0")
-    return "" ;
-
-  $dateArray = explode("/", $french) ;
-  $monthname = FrenchMonthNames($dateArray[0]) ;
+  $dateArray = gregoriantoromme_getArray($m,$d,$y);
+  
+  $monthname = FrenchMonthNames($dateArray[0]);
   $dayname = FrenchDayNames($dateArray[1]);
 
   if ($dateArray[0]==13) {
