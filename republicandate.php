@@ -115,20 +115,6 @@ function romme_getArray($romme_date_string) {
   return $rommeArray;
 }
 
-
-function gregorian2FrenchDateArray($m, $d, $y)
-{
-    $rommeArray = gregoriantoromme_getArray($m, $d, $y);
-   
-    // get the month name
-    $monthname = FrenchMonthNames($rommeArray[0]) ;
-   
-    /* convert the year number to roman digits (as most historians do and documents of the time did */
-    $stryear = $rommeArray[2];
-
-    return array($monthname, $rommeArray[1], $stryear ) ;
-}
-
 function FrenchMonthNames($mo)
 {
     /* The names have been invented by Fabre d'Églantine, a second or rather third rank poet
