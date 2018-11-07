@@ -32,10 +32,21 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
       <strong>Jour julien :</strong> <?php echo $testJulianday; ?> <br />
     </p>
     
-    <h2>Test des différentes fonctions</h2>
+    <h2>Getting the "romme date string"</h2>
     <p>
       <strong>jdtoromme :</strong> <?php echo jdtoromme( $testJulianday );?> <br />
       <strong>gregoriantoromme :</strong> <?php echo gregoriantoromme($testMois, $testJour, $testAnnee);?><br />
+    </p>
+    
+    <h2>Getting the month/day/year</h2>
+    <p>
+      <strong>romme_getDay :</strong> <?php echo romme_getDay( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getMonth :</strong> <?php echo romme_getMonth( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getYear :</strong> <?php echo romme_getYear( jdtoromme( $testJulianday ) );?> <br />
+    </p>
+    
+    <h2>Test des différentes fonctions</h2>
+    <p>
       <strong>gregorian2FrenchDateString :</strong> <?php echo gregoriantoromme_completeString($testMois, $testJour, $testAnnee);?><br />
       <strong>gregorian2FrenchDateStringShort :</strong> <?php echo gregoriantoromme_simplerString($testMois, $testJour, $testAnnee);?><br />
       
