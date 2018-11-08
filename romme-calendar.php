@@ -154,7 +154,7 @@ function gregoriantoromme_getArray($m, $d, $y) {
 
 /*  2.1. Getting the different numerical elements from a romme array
  */
- 
+
 function romme_getDay($romme_date_string) {
   $rommeArray = romme_getArray($romme_date_string);
   
@@ -175,10 +175,10 @@ function romme_getYear($romme_date_string) {
 
 /*  3. Getting republican calendar names
 
-    Get the names of the month, days, etc. of the revolutionnary calendar
+    Get the names of the month, days, etc. of the revolutionnary calendar. Theses functions are prefixed with repcal_ as they don't use the romme date string.
  */
 
-function romme_getMonthName($month)
+function repcal_getMonthName($month)
 {
   // Convert a month number to the right republican calendar month name.
   
@@ -202,7 +202,7 @@ function romme_getMonthName($month)
   }
 }
 
-function romme_getDayName($day)
+function repcal_getDayName($day)
 {
   // Convert a month day number to the right republican calendar day name. 
   // /!\ Do not use if you are in the sansculottides days, as *technically*, they aren't part of any decade.
@@ -225,10 +225,10 @@ function romme_getDayName($day)
   return $dayArray[($day-1) % 10];   
 }
 
-function romme_getDayMonthNames($month, $day, $showDecadeDayName) {
+function repcal_getDayMonthNames($month, $day, $showDecadeDayName) {
   if ($month < 13) {
-    $dayString   = romme_getDayName($day);
-    $monthString = romme_getMonthName($month);
+    $dayString   = repcal_getDayName($day);
+    $monthString = repcal_getMonthName($month);
     
     $dayMonthString = $day . " " . $monthString;
   
@@ -236,13 +236,13 @@ function romme_getDayMonthNames($month, $day, $showDecadeDayName) {
       $dayMonthString = $dayString . " " . $dayMonthString;
     }
   } else {
-    $dayMonthString   = romme_getComplementaryDay();
+    $dayMonthString   = repcal_getComplementaryDay();
   }
   
   return $dayMonthString;
 }
 
-function romme_getComplementaryDay($Day) {
+function repcal_getComplementaryDay($day) {
   // Convert the sansculottide day number to a string.
 
   $ordinalnumberArray = array("Premier",
@@ -252,15 +252,15 @@ function romme_getComplementaryDay($Day) {
                 "Cinquième",
                 "Sixième");
 
-  if($Day < count($ordinalnumberArray) + 1) {
-    $ordinalName = $ordinalnumberArray[$Day-1];
+  if($day < count($ordinalnumberArray) + 1) {
+    $ordinalName = $ordinalnumberArray[$day-1];
     $ordinalString = $ordinalName . " jour des Sanscullotides";
     
     return $ordinalString;
   }
 }
 
-function romme_getEpiphany($month, $day) {
+function repcal_getEpiphany($month, $day) {
   // Convert a romme day and month number to the corresponding epiphany name.
 
   // Days names comes from Fabre d'Eglantine : https://en.wikipedia.org/wiki/French_Republican_calendar#Rural_Calendar
@@ -272,11 +272,11 @@ function romme_getEpiphany($month, $day) {
       return $epiphanyArray[$absoluteDay-1];
     }
   } else {
-    return romme_getComplementaryDayName($day);
+    return repcal_getComplementaryDayName($day);
   }
 }
 
-function romme_getComplementaryDayName($Day) {
+function repcal_getComplementaryDayName($day) {
   // Convert the sansculottide day number to its name.
 
   // Complentary Day names: https://en.wikipedia.org/wiki/French_Republican_calendar#Complementary_days 
@@ -287,8 +287,8 @@ function romme_getComplementaryDayName($Day) {
                 "Jour des récompenses",
                 "Jour de la révolution");
 
-  if($Day < count($sanscullotidesArray)+1)
-    return $sanscullotidesArray[$Day-1] ;
+  if($day < count($sanscullotidesArray)+1)
+    return $sanscullotidesArray[$day-1] ;
 }
 
 /*  4. Romme calendar string handling
@@ -304,9 +304,9 @@ function gregoriantoromme_completeString($m,$d,$y) {
   $dateArray = gregoriantoromme_getArray($m,$d,$y);
   
   // Get the month and day names
-  $dayMonthString = romme_getDayMonthNames($dateArray[0], $dateArray[1], true);
+  $dayMonthString = repcal_getDayMonthNames($dateArray[0], $dateArray[1], true);
   
-  $saintString = romme_getComplementaryDayName($dateArray[0],$dateArray[1]);
+  $saintString = repcal_getComplementaryDayName($dateArray[0],$dateArray[1]);
 
   // Create the string for the year
   $yearString = "an " . $dateArray[2];
@@ -319,7 +319,7 @@ function gregoriantoromme_simplerString($m,$d,$y) {
   $dateArray = gregoriantoromme_getArray($m,$d,$y);
   
   // Get the month and day names
-  $dayMonthString = romme_getDayMonthNames($dateArray[0], $dateArray[1], false);
+  $dayMonthString = repcal_getDayMonthNames($dateArray[0], $dateArray[1], false);
   
   // Create the string for the year
   $yearString = "an " . $dateArray[2];
