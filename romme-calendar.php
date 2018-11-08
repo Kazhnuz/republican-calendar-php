@@ -236,7 +236,7 @@ function repcal_getDayMonthNames($month, $day, $showDecadeDayName) {
       $dayMonthString = $dayString . " " . $dayMonthString;
     }
   } else {
-    $dayMonthString   = repcal_getComplementaryDay();
+    $dayMonthString   = repcal_getComplementaryDay($day);
   }
   
   return $dayMonthString;
@@ -289,6 +289,58 @@ function repcal_getComplementaryDayName($day) {
 
   if($day < count($sanscullotidesArray)+1)
     return $sanscullotidesArray[$day-1] ;
+}
+
+/*  3.1. Get names from the current month/day from a romme string
+
+ */
+ 
+function romme_getMonthName($romme_date_string) {
+  // Get month name from the date string
+  
+  $dateArray = romme_getArray($romme_date_string);
+  
+  return repcal_getMonthName($dateArray[0]);
+}
+
+function romme_getDayName($romme_date_string) {
+  // Get day name from the date string
+  
+  $dateArray = romme_getArray($romme_date_string);
+  
+  return repcal_getDayName($dateArray[1]);
+}
+
+function romme_getDayMonthNames($romme_date_string, $showDecadeDayName) {
+  // Get day name from the date string
+  
+  $dateArray = romme_getArray($romme_date_string);
+  
+  return repcal_getDayMonthNames($dateArray[0], $dateArray[1], $showDecadeDayName);
+}
+
+function romme_getComplementaryDay($romme_date_string) {
+  // Get the complementary day name from the date string
+  
+  $dateArray = romme_getArray($romme_date_string);
+  
+  return repcal_getComplementaryDay($dateArray[1]);
+}
+
+function romme_getEpiphany($romme_date_string) {
+  // Get day name from the date string
+  
+  $dateArray = romme_getArray($romme_date_string);
+  
+  return repcal_getEpiphany($dateArray[0], $dateArray[1]);
+}
+
+function romme_getComplementaryDayName($romme_date_string) {
+  // Get day name from the date string
+  
+  $dateArray = romme_getArray($romme_date_string);
+  
+  return repcal_getComplementaryDayName($dateArray[1]);
 }
 
 /*  4. Romme calendar string handling

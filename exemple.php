@@ -46,6 +46,16 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
       <strong>romme_getYear :</strong> <?php echo romme_getYear( jdtoromme( $testJulianday ) );?> <br />
     </p>
     
+    <h2>Getting the month/day/year… names</h2>
+    <p>
+      <strong>romme_getDayName :</strong> <?php echo romme_getDayName( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getMonthName :</strong> <?php echo romme_getMonthName( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getDayMonthNames :</strong> <?php echo romme_getDayMonthNames( jdtoromme( $testJulianday ), true );?> <br />
+      <strong>romme_getComplementaryDay :</strong> <?php echo romme_getComplementaryDay( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getEpiphany :</strong> <?php echo romme_getEpiphany( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getComplementaryDayName :</strong> <?php echo romme_getComplementaryDayName( jdtoromme( $testJulianday ) );?> <br />
+    </p>
+    
     <h2>Test des différentes fonctions</h2>
     <p>
       <strong>gregorian2FrenchDateString :</strong> <?php echo gregoriantoromme_completeString($testMois, $testJour, $testAnnee);?><br />
