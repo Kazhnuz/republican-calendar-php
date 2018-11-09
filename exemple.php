@@ -64,6 +64,9 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
       <strong>gregoriantoromme_getFormattedString :</strong> <?php echo gregoriantoromme_getFormattedString($testMois, $testJour, $testAnnee, false);?><br />
       <strong>gregoriantoromme_getFormattedStringComplete :</strong> <?php echo gregoriantoromme_getFormattedStringComplete($testMois, $testJour, $testAnnee);?><br />
       
+      <strong>jdtoromme_getFormattedString :</strong> <?php echo jdtoromme_getFormattedString($testJulianday, false);?><br />
+      <strong>jdtoromme_getFormattedStringComplete :</strong> <?php echo jdtoromme_getFormattedStringComplete($testJulianday);?><br />
+      
     </p>
   </body>
 </html>
