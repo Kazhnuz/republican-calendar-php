@@ -6,10 +6,14 @@ Le script peut afficher soit une date minimale (style 23 Brumaire, an 225) soit 
 
 ## Comment l'utiliser.
 
+### Obtenir la date d'aujourd'hui dans le calendrier révolutionnaire romme
+
 ````php
-include(republicandate.php);
-echo gregorian2FrenchDateString($m,$d,$y); //affiche la date complète + la plante du jour.
-echo gregorian2FrenchDateStringShort($m,$d,$y); //affiche la date réduite
+include(romme-calendar.php);
+// Comment afficher la date "simple" (jour+mois+année). $showDecadeDayName détermine si vous affichez le nom du jour de la décade
+echo datetoromme_getFormattedString($showDecadeDayName);
+// Comment afficher la date "complete" (jour+mois+épiphany+année) 
+echo datetoromme_getFormattedStringComplete();
 ````
 
 ## Crédits
