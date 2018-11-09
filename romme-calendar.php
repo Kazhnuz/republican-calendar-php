@@ -118,7 +118,7 @@ function gregoriantoromme($m, $d, $y) {
   return $romme_date_string;
 }
 
-function date_romme() {
+function datetoromme() {
   return gregoriantoromme(date('n'), date('j'), date('Y'));
 }
 
