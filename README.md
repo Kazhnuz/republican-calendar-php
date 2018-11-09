@@ -8,13 +8,25 @@ Le script peut afficher soit une date minimale (style 23 Brumaire, an 225) soit 
 
 ### Obtenir la date d'aujourd'hui dans le calendrier révolutionnaire romme
 
+#### Afficher la date "simple" (jour + mois + année)
+
 ````php
 include(romme-calendar.php);
-// Comment afficher la date "simple" (jour+mois+année). $showDecadeDayName détermine si vous affichez le nom du jour de la décade
 echo datetoromme_getFormattedString($showDecadeDayName);
-// Comment afficher la date "complete" (jour+mois+épiphany+année) 
+````
+**$showDecadeDayName** détermine si vous affichez le nom du jour de la décade
+
+Retourne (si $showDecadeDayName est sur true) : Nonidi 19 Brumaire, an 227
+Retourne (si $showDecadeDayName est sur false) : 19 Brumaire, an 227
+
+#### Affiche la date "complete" (avec l'epiphanie du jour)
+
+````php
+include(romme-calendar.php);
 echo datetoromme_getFormattedStringComplete();
 ````
+
+Retourne : Nonidi 19 Brumaire (*Grenade*), an 227
 
 ## Crédits
 
