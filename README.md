@@ -17,6 +17,7 @@ echo datetoromme_getFormattedString($showDecadeDayName);
 **$showDecadeDayName** détermine si vous affichez le nom du jour de la décade
 
 Retourne (si $showDecadeDayName est sur true) : Nonidi 19 Brumaire, an 227
+
 Retourne (si $showDecadeDayName est sur false) : 19 Brumaire, an 227
 
 #### Affiche la date "complete" (avec l'epiphanie du jour)
