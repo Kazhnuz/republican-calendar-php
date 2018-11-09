@@ -56,8 +56,11 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
       <strong>romme_getComplementaryDayName :</strong> <?php echo romme_getComplementaryDayName( jdtoromme( $testJulianday ) );?> <br />
     </p>
     
-    <h2>Test des différentes fonctions</h2>
+    <h2>Getting an automated string</h2>
     <p>
+      <strong>romme_completeString :</strong> <?php echo romme_completeString( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_simplerString :</strong> <?php echo romme_simplerString( jdtoromme( $testJulianday ) );?> <br />
+      
       <strong>gregorian2FrenchDateString :</strong> <?php echo gregoriantoromme_completeString($testMois, $testJour, $testAnnee);?><br />
       <strong>gregorian2FrenchDateStringShort :</strong> <?php echo gregoriantoromme_simplerString($testMois, $testJour, $testAnnee);?><br />
       
