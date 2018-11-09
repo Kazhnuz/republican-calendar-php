@@ -354,7 +354,7 @@ function romme_getComplementaryDayName($romme_date_string) {
  */
 
 function romme_getFormattedString($romme_date_string, $showDecadeDayName) {
-  // Convert a romme date string to a shorter romme date string
+  // Convert a romme date string to a formated romme date
   
   // Start by getting the romme array
   $dateArray = romme_getArray($romme_date_string);
@@ -369,7 +369,7 @@ function romme_getFormattedString($romme_date_string, $showDecadeDayName) {
 }
 
 function romme_getFormattedStringComplete($romme_date_string) {
-  // Convert a romme date string to a complete romme date string
+  // Convert a romme date string to a formated complete romme date
 
   // Start by getting the romme array
   $dateArray = romme_getArray($romme_date_string);
@@ -385,37 +385,27 @@ function romme_getFormattedStringComplete($romme_date_string) {
   return $dayMonthString . ", " . $yearString . "<br /><em>" . $saintString . "</em>";
 }
 
-/* 4.2. Getting it from the gregorian date
+/* 4.2. Getting them from the gregorian date
 
  */
 
-function gregoriantoromme_completeString($m,$d,$y) {
-  // Convert a gregorian date to a complete romme date string
+function gregoriantoromme_getFormattedString($m,$d,$y, $showDecadeDayName) {
+  // Convert a gregorian date to a formatted romme date
 
-  // Start by getting the romme array from the gregorian date
-  $dateArray = gregoriantoromme_getArray($m,$d,$y);
+  // Start by getting the romme date string from the gregorian date
+  $romme_date_string = gregoriantoromme($m,$d,$y);
   
-  // Get the month and day names
-  $dayMonthString = repcal_getDayMonthNames($dateArray[0], $dateArray[1], true);
-  
-  $saintString = repcal_getComplementaryDayName($dateArray[0],$dateArray[1]);
-
-  // Create the string for the year
-  $yearString = "an " . $dateArray[2];
-
-  return $dayMonthString . ", " . $yearString . "<br /><em>" . $saintString . "</em>";
+  // return the convertion of the romme date string to a formatted string
+  return romme_getFormattedString($romme_date_string, $showDecadeDayName);
 }
 
-function gregoriantoromme_simplerString($m,$d,$y) {
-  // Convert a gregorian date to a shorter romme date string
-  $dateArray = gregoriantoromme_getArray($m,$d,$y);
-  
-  // Get the month and day names
-  $dayMonthString = repcal_getEpiphany($dateArray[0], $dateArray[1], false);
-  
-  // Create the string for the year
-  $yearString = "an " . $dateArray[2];
+function gregoriantoromme_getFormattedStringComplete($m,$d,$y) {
+  // Convert a gregorian date to a complete romme formatted string
 
-  return $dayMonthString . ", " . $yearString;
+  // Start by getting the romme date string from the gregorian date
+  $romme_date_string = gregoriantoromme($m,$d,$y);
+  
+  // return the convertion of the romme date string to a formatted string
+  return romme_getFormattedStringComplete($romme_date_string);
 }
 ?>
