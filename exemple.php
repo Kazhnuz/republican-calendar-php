@@ -58,8 +58,8 @@ $testJulianday  = gregoriantojd($testMois, $testJour, $testAnnee);
     
     <h2>Getting an automated string</h2>
     <p>
-      <strong>romme_completeString :</strong> <?php echo romme_completeString( jdtoromme( $testJulianday ) );?> <br />
-      <strong>romme_simplerString :</strong> <?php echo romme_simplerString( jdtoromme( $testJulianday ) );?> <br />
+      <strong>romme_getFormattedString :</strong> <?php echo romme_getFormattedString( jdtoromme( $testJulianday ), false );?> <br />
+      <strong>romme_getFormattedStringComplete :</strong> <?php echo romme_getFormattedStringComplete( jdtoromme( $testJulianday ) );?> <br />
       
       <strong>gregorian2FrenchDateString :</strong> <?php echo gregoriantoromme_completeString($testMois, $testJour, $testAnnee);?><br />
       <strong>gregorian2FrenchDateStringShort :</strong> <?php echo gregoriantoromme_simplerString($testMois, $testJour, $testAnnee);?><br />
