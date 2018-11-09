@@ -362,7 +362,7 @@ function romme_completeString($romme_date_string) {
   // Get the month and day names
   $dayMonthString = repcal_getDayMonthNames($dateArray[0], $dateArray[1], true);
   
-  $saintString = repcal_getComplementaryDayName($dateArray[0], $dateArray[1]);
+  $saintString = repcal_getEpiphany($dateArray[0], $dateArray[1]);
 
   // Create the string for the year
   $yearString = "an " . $dateArray[2];
@@ -411,7 +411,7 @@ function gregoriantoromme_simplerString($m,$d,$y) {
   $dateArray = gregoriantoromme_getArray($m,$d,$y);
   
   // Get the month and day names
-  $dayMonthString = repcal_getDayMonthNames($dateArray[0], $dateArray[1], false);
+  $dayMonthString = repcal_getEpiphany($dateArray[0], $dateArray[1], false);
   
   // Create the string for the year
   $yearString = "an " . $dateArray[2];
