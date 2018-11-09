@@ -382,7 +382,7 @@ function romme_getFormattedStringComplete($romme_date_string) {
   // Create the string for the year
   $yearString = "an " . $dateArray[2];
 
-  return $dayMonthString . ", " . $yearString . "<br /><em>" . $saintString . "</em>";
+  return $dayMonthString . " (<em>" . $saintString . "</em>)" . ", " . $yearString;
 }
 
 /* 4.2. Getting them from the gregorian date
