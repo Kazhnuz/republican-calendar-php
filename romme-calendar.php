@@ -433,4 +433,28 @@ function jdtoromme_getFormattedStringComplete($juliandaycount) {
   return romme_getFormattedStringComplete($romme_date_string);
 }
 
+/* 4.3. Getting them from the julian day count
+
+ */
+ 
+function datetoromme_getFormattedString($showDecadeDayName) {
+  // Convert a gregorian date to a formatted romme date
+
+  // Start by getting the romme date string from the gregorian date
+  $romme_date_string = datetoromme();
+  
+  // return the convertion of the romme date string to a formatted string
+  return romme_getFormattedString($romme_date_string, $showDecadeDayName);
+}
+
+function datetoromme_getFormattedStringComplete() {
+  // Convert a gregorian date to a complete romme formatted string
+
+  // Start by getting the romme date string from the gregorian date
+  $romme_date_string = datetoromme();
+  
+  // return the convertion of the romme date string to a formatted string
+  return romme_getFormattedStringComplete($romme_date_string);
+}
+
 ?>
